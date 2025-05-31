@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+       .main {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: gainsboro;
+            padding: 20px;
+            border-radius: 5%;
+            text-align: center;
+        }
+       .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 10px 0;
+       }
+       .col-sm-4 {
+            flex: 1;
+            min-width: 200px;
+            margin: 5px;
+            padding: 10px;
+            box-sizing: border-box;
+       }
+       input[type=submit] {
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 16px 32px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+       }
+       h1 {
+            font-size: 30px;
+       }
+       h2 {
+            font-size: 25px;
+            color: darkred;
+       }
+       body {
+            background-image: url("{% static 'bg.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+       }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Please Enter The Following Values:</h1>
+        <form action="result">
+            <div class="row">
+                <div class="col-sm-4" style="background-color: Bisque;">
+                    <p>Avg.Area Income</p>
+                    <input type="text" name="n1">
+                </div>
+                <div class="col-sm-4" style="background-color: DarkSeaGreen;">
+                    <p>Avg.Area House Age</p>
+                    <input type="text" name="n2">
+                </div>
+                <div class="col-sm-4" style="background-color: LightPink;">
+                    <p>Avg.Area Number of Rooms</p>
+                    <input type="text" name="n3">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" style="background-color: Turquoise;">
+                    <p>Avg.Area Number of Bedrooms</p>
+                    <input type="text" name="n4">
+                </div>
+                <div class="col-sm-4" style="background-color: RosyBrown;">
+                    <p>Avg.Area Population</p>
+                    <input type="text" name="n5">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4" style="background-color: LightYellow;">
+                    <p>Location</p>
+                    <select name="location">
+                        {% for location in locations %}
+                            <option value="{{ location }}">{{ location }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="PREDICT">
+            </div>
+        </form>
+        <div class="row">
+            <h2>{{ result2 }}</h2>
+        </div>
+    </div>
+</body>
+</html>
